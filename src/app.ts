@@ -1,70 +1,136 @@
+/*
+Problema 9:
+En el instituto de Sakurajima hay una cantidad de n de estudiantes para el primer curso de secundaria,
+y solo hay dos ambientes en los cuales se los puede distribuir. Como en cualquier institución existen
+estudiantes cuyos nombres tienen la misma inicial por lo que tienden a ser muy habladores entre ellos 
+(porque tiene demasiado en común). La directora quiere minimizar lo más posible este tipo de comportamientos 
+por lo que te pide realizar un programa que le permita determinar la CANTIDAD MINIMA DE PARES de estudiantes 
+charladores que se puedan obtener distribuyéndolos en los dos ambientes. Es posible dejar un ambiente completamente
+vacío.*/
 
 
-/*Problema 10:
-Lea la documentación sobre la estructura de una dirección IPv4.
-Posteriormente realice un programa para determinar si una dirección determinada (dado como un string) cumple con todas las reglas de las direcciones IPv4.*/
-//-----10------------
-let browserType :string = '18.18.40.14';
-let num= browserType.length;
-let inicial= 0;
-let punt = 0;
-if(num<=15 && num>=7){
-    for (var i = 0; i <= num; i++) 
-    {
-        let variable = browserType [i];
-        let obj="."
-        if (variable == obj )
-        {
-           punt = punt+1;
-           if(punt>3)
-           {
-               console.log("tiene mas de tres puntos no es una direccion ip")
-               break ;
-           }
-           else
-           {
 
-           
-                    let final= i;
-                    
-                    let letra = browserType.substring(inicial,final);
-                    
-                    let numero = parseInt(letra);
-                    
-                    if(numero<=255 && numero>=0)
-                    {
-                            inicial = final+1;
-                    }
-                    else 
-                    {
-                        console.log(false)
-                            break;
-                        }
 
-           }
-        }
-        if(i == num)
-        {
-            let letra = browserType.substring(inicial,i);
-           
-            let numero = parseInt(letra);
+let cat1:String[] = ["kambei","gorobei","shichiroji","kyuzo","heihachi","katsushiro","kikuchiyo"];
+
+let b:String = cat1[0];
+let z:string = b[0];
+let cont=0;
+let cad2:String[] = new Array;
+for(let j= 0; j < cat1.length; j++)
+{
+   let w = cat1[j]; 
+   let a=w.length;
+   for(let k= 0; k < a; k++)
+   {
+         cad2.push(w[k]);
+         break;
+        
+   }
+}
+
+let cad3:number[] = new Array;
+let abc:number = 0;
+let l:String = "a";
+for(let i=0; i < cad2.length; i++){
+      cont=0;
+      
+      let u:String= compro(cad2[i],i);
+      if(u=="si")
+      {
+           for(let j=i; j < cad2.length; j++)
+            {
+            if(cad2[i] == cad2[j]){
+               cont= cont + 1;
+            }
             
-           if(numero<=255 && numero >=0)
-           {    
-               if(punt<3)
-               {
-                        console.log(false);
-               }
-               else
-                    {
-                       console.log(true); 
-                    }
-           }
-           else 
-               {console.log(false);
-               }
-        }
+         
+            }
+            l=cad2[i];
+            cad3.push(cont); 
+      }
+}
 
+
+
+function compro(leg:String,nmr:number):String {
+  for (let i = 0; i <nmr; i++) {
+    if (leg==cad2[i]) {
+      return "no";
     }
-} 
 
+  }
+  return "si";
+  
+}
+
+
+
+
+
+
+
+let total=0;
+for(let i=0; i < cad3.length; i++)
+{     
+      let p:number= (cad3[i]);
+      let contar=0;
+      if(p%2 == 0)
+      {
+             
+             
+            for(let h=2;h<=p;h++)
+            {     
+                  if(p==h)
+                  {
+                        contar=contar+1;
+                        
+                        
+                  }
+                  else
+                  {
+                        contar=contar+1;
+                        h=h+1
+                  }
+
+            }
+           
+            
+
+
+      }
+      else{
+            if(p>1)
+            {
+                         for(let h=2;h<=p;h++)
+                        {     
+                               if(p==h)
+                              {
+                                     contar=contar+1;
+                        
+                        
+                              }
+                              else
+                              {
+                                    contar=contar+1;
+                                    h=h+1
+                              }
+
+                        }          
+            }
+      }
+      total=total+contar;
+      
+     
+
+}
+ console.log(total);
+
+
+
+
+//juan,jorge,oscar,pepe,david   ------>  1
+//juan,jorge,oscar,jerry     --------->  1
+
+      
+         
