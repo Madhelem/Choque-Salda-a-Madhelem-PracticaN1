@@ -1,22 +1,29 @@
-/*Problema 7:
-Realice un programa en el cual se le proporcionara dos cadenas, y su trabajo consistirá en encontrar el número de caracteres similares que tiene entre ellos, incluyendo los repetidos.*/
-var str1 = 'zzzz';
-var str2 = 'zzzzzzz';
-var z = new Map();
-for (var i = 0; i < str1.length; i++) {
-    if (!z.get(str1[i])) {
-        z.set(str1[i], 1);
+/*Problema 8:
+Dado un numero N encontrar los N primeros números primos*/
+var c = 9;
+var aux = 2;
+var cont = 0;
+while (aux >= 2) {
+    var numero = primo(aux);
+    if (numero) {
+        console.log(aux);
+        cont = cont + 1;
+    }
+    if (cont == c) {
+        break;
+    }
+    aux = aux + 1;
+}
+function primo(numero) {
+    for (var i = 2; i < numero; i++) {
+        if (numero % i == 0) {
+            return false;
+        }
+    }
+    if (numero < 2) {
+        return false;
     }
     else {
-        z.set(str1[i], z.get(str1[i]) + 1);
-    }
-    //console.log(z.get(str1[i]))
-}
-var cnt = 0;
-for (var i = 0; i < str2.length; i++) {
-    if (z.get(str2[i]) && z.get(str2[i]) > 0) {
-        z.set(str2[i], z.get(str2[i]) - 1);
-        cnt = cnt + 1;
+        return true;
     }
 }
-console.log(cnt);
