@@ -1,27 +1,37 @@
-/*Problema 5:
-A Pieck le entregaron un montón de estatuas de diferentes tamaños, Pieck quiere ordenarlas de la más pequeña a las mas grande sin embargo también desea que cada estatua sea mas grande que la anterior solo por 1 de diferencia por lo que también ve pertinente adquirir nuevas estatuas. Ayúdala a determinar cuántas estatuas MAS debe adquirir para lograr su cometido.*/
-let arrays:number[] = new Array;
-let arrays1:number[] = new Array;
-arrays1 = [];
-arrays=[6, 2, 3, 8];
-let men:number=arrays[0];
-let may:number=arrays[0];
-for(let i = 0;i < arrays.length;i++) { 
-   if(arrays[i] < men){
-      men = arrays[i];
-   }else{
-      if(arrays[i] > may){
-         may = arrays[i];
-      }
-   }
+
+
+/*Los StrawhatPirates llegaron a un hotel el cual tiene la peculiaridad de que tiene habitaciones con 0 costo, la razón es que están embrujadas, dado que los invitados son bastante supersticiosos se niegan a ocupar una de esas habitaciones o CUALQUIERA DE LAS HABITACIONES que se encuentren por debajo de ellas.
+Ellos piden tu ayuda para determinar el costo total de las habitaciones que si pueden ocupar.
+Example*/
+
+let matrix:number[][] = 
+[[0,1,1,2],
+[0,5,0,0],
+[2,0,3,3]
+                        
+    
+];
+let sum = 0;
+let max=matrix.length;
+for (var i = 0; i < matrix.length; i++)
+{
+   for (var y = 0; y <matrix[i].length; y++)
+   {
+            if(matrix[i][y] != 0){
+                  
+                  if (i!=matrix.length-1)
+                  {
+                        if(matrix[i+1][y] != 0){
+                            sum = sum + matrix[i][y];
+                        }
+                  }
+                  else 
+                  {
+                         sum = sum + matrix[i][y];
+                  }
+            }
+
+
+   }  
 }
-while(men <= may){
-      arrays1.push(men);
-      men ++;
-   }
-
-let l1:number=arrays.length;
-let l2:number=arrays1.length;
-
-console.log(l2-l1);
-
+console.log(sum);
