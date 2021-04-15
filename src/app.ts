@@ -1,11 +1,18 @@
-/*Problema 2:
-Dada una cadena mostrarla invertida*/
+/*Problema 3:
+Dada una cadena comprobar si es palíndromo*/
+let palabra: string = 'this is a sample string';
+console.log(esPalindromo(palabra));
 
-let cadena:string = 'this is a sample string';
-let cadenarevertida:string = "";
-   
-for(let i = cadena.length-1; i>=0; i--)
+function esPalindromo(palabra: string)
 {
-  cadenarevertida += cadena[i];
+    palabra = palabra.toLowerCase();
+    let j = palabra.length -1;
+    for (let i = 0,j = palabra.length -1; i <= j; i++, j--)
+    {
+        if(palabra.charAt(i) != palabra.charAt(j))
+        {
+          return false;
+        }
+    }
+    return true;
 }
-console.log(cadenarevertida);
